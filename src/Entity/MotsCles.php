@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\CategoriesRepository;
+use App\Repository\MotsClesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=CategoriesRepository::class)
+ * @ORM\Entity(repositoryClass=MotsClesRepository::class)
  */
-class Categories
+class MotsCles
 {
     /**
      * @ORM\Id
@@ -20,17 +20,17 @@ class Categories
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=50)
      */
-    private $nom;
+    private $mot_cle;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=60)
      */
     private $slug;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Articles::class, mappedBy="categories")
+     * @ORM\ManyToMany(targetEntity=Articles::class, mappedBy="mots_cles")
      */
     private $articles;
 
@@ -44,14 +44,14 @@ class Categories
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getMotCle(): ?string
     {
-        return $this->nom;
+        return $this->mot_cle;
     }
 
-    public function setNom(string $nom): self
+    public function setMotCle(string $mot_cle): self
     {
-        $this->nom = $nom;
+        $this->mot_cle = $mot_cle;
 
         return $this;
     }
@@ -80,7 +80,7 @@ class Categories
     {
         if (!$this->articles->contains($article)) {
             $this->articles[] = $article;
-            $article->addCategory($this);
+            $article->addMotsCle($this);
         }
 
         return $this;
@@ -89,7 +89,7 @@ class Categories
     public function removeArticle(Articles $article): self
     {
         if ($this->articles->removeElement($article)) {
-            $article->removeCategory($this);
+            $article->removeMotsCle($this);
         }
 
         return $this;
