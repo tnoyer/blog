@@ -1,0 +1,117 @@
+/* global styles */
+
+body{
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* header */
+
+.site-title {
+    display: flex;
+    align-items: center;
+    font-size: 48px;
+}
+
+.site-title img {
+    height: 48px;
+    display: block;
+    margin-right: 5px;
+}
+
+header nav ul {
+    margin: 5px 0;
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+header nav a {
+    display: block;
+    padding: 5px 8px;
+    margin-right: 10px;
+}
+
+/* main */
+main {
+    padding: 30px 0;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.flash{
+    padding: 20px;
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.flash-success{
+    background-color: #4B8B20;
+}
+
+flash.error{
+    background-color: #AA3333;
+}
+
+h1 {
+    margin: 0;
+}
+
+form{
+    margin-top: 10px;
+}
+
+label{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/*
+login
+ */
+
+.block-btnSubmit-rememberMe{
+    display: flex;
+}
+
+.block-rememberMe-mdp{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+/**
+footer
+ */
+footer {
+    padding: 20px 0;
+    text-align: center;
+}
+
+/** EVENTS FILTERS*/
+.filter{
+    display: block;
+    position: sticky;
+    top: 20px;
+}
+
+#filters_middle{
+    margin-top: 65px;
+
+}
+
+#filters_button{
+    margin-top: 65px;
+}
