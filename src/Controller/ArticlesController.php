@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class ArticlesController
  * @package App\Controller
- * @Route("/actualites", name="actualités_")
+ * @Route("/actualites", name="actualites_")
  */
 class ArticlesController extends AbstractController
 {
@@ -29,7 +29,7 @@ class ArticlesController extends AbstractController
         $articles = $paginator->paginate(
             $donnees,
             $request->query->getInt('page', 1),
-            4
+            6
         );
 
         return $this->render('articles/index.html.twig', [
@@ -38,23 +38,15 @@ class ArticlesController extends AbstractController
     }
 
     /**
-     * @Route("/{slug}", name="slug")
+     * @Route("/{slug}", name="article")
      */
     public function article($slug, Request $request){
-        //on récupère l'article correspondant au slug
+        // On récupère l'article correspondant au slug
         $article = $this->getDoctrine()->getRepository(Articles::class)->findOneBy(['slug' => $slug]);
-        $commentaires = $this->getDoctrine()->getRepository(Commentaires::class)->findBy([],
-            ['articles' => $article,
-            'actif' => 1],
-            ['created_at' => 'desc']
-        );
-        /*
         if(!$article){
-
+            // Si aucun article n'est trouvé, nous créons une exception
+            throw $this->createNotFoundException('L\'article n\'existe pas');
         }
-        */
-        return $this->render('articles/article.html.twig', [
-            'article' => $article,
-        ]);
+        return $this->render('articles/article.html.twig', compact('article'));
     }
 }

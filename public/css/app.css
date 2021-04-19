@@ -92,6 +92,16 @@ login
     margin-left: 10px;
 }
 
+/*
+list of articles
+ */
+.block-articles{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+
 /**
 footer
  */

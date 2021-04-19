@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Articles;
+use App\Entity\Categories;
 use App\Entity\Users;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -20,13 +21,12 @@ class AppFixtures extends Fixture
         //create fake information
         $faker = \Faker\Factory::create('fr_FR');
 
-        //user1
+        //users
         $user1 = new Users();
         $user1->setEmail('theo@mail.fr');
         $user1->setPassword($this->passwordEncoder->encodePassword($user1, '123456'));
         $manager->persist($user1);
 
-        //user2
         $user2 = new Users();
         $user2->setEmail('alex@mail.fr');
         $user2->setPassword($this->passwordEncoder->encodePassword($user2, '123456'));
@@ -35,6 +35,28 @@ class AppFixtures extends Fixture
         $users = [
             $user1,
             $user2
+        ];
+
+        //catégories
+        $cat1 = new Categories();
+        $cat1->setNom('Faits divers');
+        $cat1->setSlug('faits-divers');
+        $manager->persist($cat1);
+
+        $cat2 = new Categories();
+        $cat2->setNom('Sport');
+        $cat2->setSlug('sport');
+        $manager->persist($cat2);
+
+        $cat3 = new Categories();
+        $cat3->setNom('Politique');
+        $cat3->setSlug('politique');
+        $manager->persist($cat3);
+
+        $categories = [
+            $cat1,
+            $cat2,
+            $cat3
         ];
 
         //articles
@@ -47,6 +69,7 @@ class AppFixtures extends Fixture
             $article->setUpdatedAt(new \DateTime('now'));
             $article->setUsers($users[rand(0,1)]);
             $article->setFeaturedImage('image');
+            $article->addCategory($categories[rand(0,2)]);
             $manager->persist($article);
         }
 
