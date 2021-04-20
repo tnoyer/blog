@@ -2,7 +2,7 @@
 
 {% block title %}{{ parent() }} | S'inscrire{% endblock %}
 
-{% block body %}
+{% block main %}
     <div class="container">
         {% for flashError in app.flashes('verify_email_error') %}
             <div class="alert alert-danger" role="alert">{{ flashError }}</div>

@@ -2,7 +2,7 @@
 
 {% block title %}{{ parent() }} | {{ article.titre }}{% endblock %}
 
-{% block body %}
+{% block main %}
     <h1>{{ article.titre }}</h1>
     <p>{{ article.createdAt|date }}</p>
     <div>{{ article.contenu|raw }}</div>
