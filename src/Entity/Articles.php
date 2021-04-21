@@ -54,7 +54,7 @@ class Articles
     private $updated_at;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @var string
      */
     private $featured_image;
@@ -155,10 +155,10 @@ class Articles
         return $this->imageFile;
     }
 
-    public function setImageFile(File $image = null)
+    public function setImageFile(File $imageFile = null)
     {
-        $this->imageFile = $image;
-        if($image){
+        $this->imageFile = $imageFile;
+        if($imageFile){
             $this->updated_at = new \DateTime('now');
         }
     }

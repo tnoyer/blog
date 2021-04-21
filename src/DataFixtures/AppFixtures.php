@@ -40,17 +40,14 @@ class AppFixtures extends Fixture
         //catégories
         $cat1 = new Categories();
         $cat1->setNom('Faits divers');
-        $cat1->setSlug('faits-divers');
         $manager->persist($cat1);
 
         $cat2 = new Categories();
         $cat2->setNom('Sport');
-        $cat2->setSlug('sport');
         $manager->persist($cat2);
 
         $cat3 = new Categories();
         $cat3->setNom('Politique');
-        $cat3->setSlug('politique');
         $manager->persist($cat3);
 
         $categories = [
@@ -63,12 +60,8 @@ class AppFixtures extends Fixture
         for ($i = 1; $i <= 10; $i++){
             $article = new Articles();
             $article->setTitre('Article'.$i);
-            $article->setSlug('art'.$i);
             $article->setContenu($faker->realText($maxNbChars = 200, $indexSize = 1));
-            $article->setCreatedAt(new \DateTime('now'));
-            $article->setUpdatedAt(new \DateTime('now'));
             $article->setUsers($users[rand(0,1)]);
-            $article->setFeaturedImage('image');
             $article->addCategory($categories[rand(0,2)]);
             $manager->persist($article);
         }

@@ -19,6 +19,16 @@ class ArticlesRepository extends ServiceEntityRepository
         parent::__construct($registry, Articles::class);
     }
 
+    /**
+     * @return count of articles
+     */
+    public function countAllArticles()
+    {
+        $qb = $this->createQueryBuilder('a');
+        $qb->select('COUNT(a.id) as value');
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+
     // /**
     //  * @return Articles[] Returns an array of Articles objects
     //  */
