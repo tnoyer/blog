@@ -41,6 +41,14 @@ class MotsCles
         $this->articles = new ArrayCollection();
     }
 
+    /**
+     * @return string|null
+     */
+    public function __toString()
+    {
+        return $this->getMotCle();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

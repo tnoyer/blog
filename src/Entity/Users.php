@@ -53,6 +53,9 @@ class Users implements UserInterface
         $this->articles = new ArrayCollection();
     }
 
+    /**
+     * @return string|null
+     */
     public function __toString()
     {
         return $this->getEmail();

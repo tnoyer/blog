@@ -41,6 +41,14 @@ class Categories
         $this->articles = new ArrayCollection();
     }
 
+    /**
+     * @return string|null
+     */
+    public function __toString()
+    {
+        return $this->getNom();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

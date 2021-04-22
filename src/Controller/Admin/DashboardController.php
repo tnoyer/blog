@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Articles;
 use App\Entity\Categories;
 use App\Entity\MotsCles;
+use App\Entity\Users;
 use App\Repository\ArticlesRepository;
 use App\Repository\UsersRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -53,6 +54,9 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Articles', 'fa fa-book', Articles::class),
             MenuItem::linkToCrud('Categories', 'fa fa-tags', Categories::class),
             MenuItem::linkToCrud('Mots-cles', 'fa fa-tags', MotsCles::class),
+
+            MenuItem::section('Utilisateurs'),
+            MenuItem::linkToCrud('Utilisateurs', 'fa fa-users', Users::class),
         ];
     }
 
