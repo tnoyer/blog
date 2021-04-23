@@ -40,8 +40,8 @@ class ArticlesCrudController extends AbstractCrudController
             TextField::new('titre'),
             TextEditorField::new('contenu')->hideOnIndex(),
             AssociationField::new('users'), //définir function __toString() ds entity Users
-            AssociationField::new('categories'), //définir function __toString() ds entity Categories
-            AssociationField::new('mots_cles'), //définir function __toString() ds entity motsCles
+            AssociationField::new('categories')->onlyOnForms(), //définir function __toString() ds entity Categories
+            AssociationField::new('mots_cles')->onlyOnForms(), //définir function __toString() ds entity motsCles
             DateTimeField::new('created_at')->onlyOnIndex(),
         ];
 
