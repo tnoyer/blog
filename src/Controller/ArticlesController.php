@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Articles;
 use App\Entity\Commentaires;
+use App\Form\CommentaireFormType;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,10 +44,50 @@ class ArticlesController extends AbstractController
     public function article($slug, Request $request){
         // On récupère l'article correspondant au slug
         $article = $this->getDoctrine()->getRepository(Articles::class)->findOneBy(['slug' => $slug]);
+
+        // On récupère les commentaires actifs de l'article
+        $commentaires = $this->getDoctrine()->getRepository(Commentaires::class)->findBy([
+            'articles' => $article,
+            'actif' => 1
+        ],['created_at' => 'desc']);
+
         if(!$article){
             // Si aucun article n'est trouvé, nous créons une exception
             throw $this->createNotFoundException('L\'article n\'existe pas');
         }
-        return $this->render('articles/article.html.twig', compact('article'));
+
+        //on instancie l'entity Commentaires
+        $commentaire = new Commentaires();
+        //on crée l'objet formulaire
+        $form = $this->createForm(CommentaireFormType::class, $commentaire);
+
+        // Nous récupérons les données
+        $form->handleRequest($request);
+
+        // Nous vérifions si le formulaire a été soumis et si les données sont valides
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Hydrate notre commentaire avec l'article
+            $commentaire->setArticles($article);
+
+            // Hydrate notre commentaire avec la date et l'heure courants
+            $commentaire->setCreatedAt(new \DateTime('now'));
+
+            $doctrine = $this->getDoctrine()->getManager();
+
+            // On hydrate notre instance $commentaire
+            $doctrine->persist($commentaire);
+
+            // On écrit en base de données
+            $doctrine->flush();
+
+            // On redirige l'utilisateur
+            return $this->redirectToRoute('actualites_article', ['slug' => $slug]);
+        }
+
+        return $this->render('articles/article.html.twig', [
+            'article' => $article,
+            'commentaires' => $commentaires,
+            'commentForm' => $form->createView()
+        ]);
     }
 }

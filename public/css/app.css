@@ -97,10 +97,11 @@ list of articles
  */
 .block-articles{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
-    align-content: space-between;
 }
+
+
 
 /**
 footer

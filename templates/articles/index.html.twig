@@ -13,13 +13,13 @@
         #}
         <div class="block-articles">
             {% for article in articles %}
-                <div class="card" style="width: 18rem; margin-bottom: 1rem;">
+                <div class="card" style="width: 18rem; margin: 0 1rem 1rem 0;">
                     <div class="card-body">
-                        <h5 class="card-title"><a
-                                    href="{{ path('actualites_article', {'slug': article.slug}) }}">{{ article.titre }}</a>
+                        <h5 class="card-title">
+                            <a href="{{ path('actualites_article', {'slug': article.slug}) }}">{{ article.titre }}</a>
                         </h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{ article.slug }}</h6>
-                        <p class="card-text">{{ article.contenu }}</p>
+                        <p class="card-text">{{ article.contenu | raw }}</p>
                     </div>
                 </div>
             {% endfor %}

@@ -4,12 +4,24 @@
 
 {% block main %}
     <h1>{{ article.titre }}</h1>
-    <p>{{ article.createdAt|date }}</p>
-    <div>{{ article.contenu|raw }}</div>
-
+    <p>Publié le {{ article.createdAt|date('d/m/Y à h\\hi') }}</p>
     <p>Catégories :
         {% for categorie in article.categories %}
             {{ categorie.nom }}
         {% endfor %}
     </p>
+    <div>{{ article.contenu|raw }}</div>
+
+    <br>
+
+    <h2>Commentaires ({{ commentaires | length }})</h2>
+    {% for commentaire in commentaires %}
+        <p>Ecrit par {{ commentaire.pseudo }} le {{ commentaire.createdAt|date }}</p>
+        <div>{{ commentaire.contenu }}</div>
+    {% else %}
+        <p>Il n'y a pas de commentaires !</p>
+    {% endfor %}
+
+    <h2>Ajouter un commentaire</h2>
+    {{ form(commentForm) }}
 {% endblock %}
