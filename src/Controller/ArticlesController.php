@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Articles;
 use App\Entity\Commentaires;
+use App\Form\ArticleFormType;
 use App\Form\CommentaireFormType;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -39,7 +40,18 @@ class ArticlesController extends AbstractController
     }
 
     /**
-     * @Route("/{slug}", name="article")
+     * @Route("/article/nouveau", name="ajout_article")
+     */
+    public function AjoutArticle(Request $request){
+        $article = new Articles();
+        $form = $this->createForm(ArticleFormType::class, $article);
+        return $this->render('articles/ajout.html.twig', [
+            'articleForm' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/article/{slug}", name="article")
      */
     public function article($slug, Request $request){
         // On récupère l'article correspondant au slug
