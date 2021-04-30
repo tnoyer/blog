@@ -10,6 +10,7 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * Class ArticlesController
@@ -31,7 +32,7 @@ class ArticlesController extends AbstractController
         $articles = $paginator->paginate(
             $donnees,
             $request->query->getInt('page', 1),
-            6
+            8
         );
 
         return $this->render('articles/index.html.twig', [
@@ -40,11 +41,32 @@ class ArticlesController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/article/nouveau", name="ajout_article")
      */
     public function AjoutArticle(Request $request){
         $article = new Articles();
         $form = $this->createForm(ArticleFormType::class, $article);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $article->setUsers($this->getUser());
+
+            $doctrine = $this->getDoctrine()->getManager();
+
+            // On hydrate notre instance $commentaire
+            $doctrine->persist($article);
+
+            // On écrit en base de données
+            $doctrine->flush();
+
+            //message de succès
+            $this->addFlash('success', 'L\'article a bien été ajouté!');
+
+            // On redirige l'utilisateur
+            return $this->redirectToRoute('actualites_articles');
+        }
+
         return $this->render('articles/ajout.html.twig', [
             'articleForm' => $form->createView()
         ]);
@@ -91,6 +113,9 @@ class ArticlesController extends AbstractController
 
             // On écrit en base de données
             $doctrine->flush();
+
+            //message de succès
+            $this->addFlash('success', 'Le commentaire est en cous de validation!');
 
             // On redirige l'utilisateur
             return $this->redirectToRoute('actualites_article', ['slug' => $slug]);

@@ -10,6 +10,14 @@
             {{ categorie.nom }}
         {% endfor %}
     </p>
+    {#
+    <p>Mots-clés :
+        {% for motCle in article.mots_cles %}
+            {{ motCle.mot_cle }}
+        {% endfor %}
+    </p>
+    #}
+
     <div>{{ article.contenu|raw }}</div>
 
     <br>

@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Articles;
 use App\Entity\Categories;
+use App\Entity\MotsCles;
 use App\Entity\Users;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -58,6 +59,25 @@ class AppFixtures extends Fixture
             $cat3
         ];
 
+        //Mots-clés
+        $motCle1 = new MotsCles();
+        $motCle1->setMotCle('France');
+        $manager->persist($motCle1);
+
+        $motCle2 = new MotsCles();
+        $motCle2->setMotCle('Angers');
+        $manager->persist($motCle2);
+
+        $motCle3 = new MotsCles();
+        $motCle3->setMotCle('Tramway');
+        $manager->persist($motCle3);
+
+        $motsCles = [
+            $motCle1,
+            $motCle2,
+            $motCle3
+        ];
+
         //articles
         for ($i = 1; $i <= 10; $i++){
             $article = new Articles();
@@ -65,6 +85,7 @@ class AppFixtures extends Fixture
             $article->setContenu($faker->realText($maxNbChars = 200, $indexSize = 1));
             $article->setUsers($users[rand(0,1)]);
             $article->addCategory($categories[rand(0,2)]);
+            $article->addMotsCle($motsCles[rand(0,2)]);
             $manager->persist($article);
         }
 
