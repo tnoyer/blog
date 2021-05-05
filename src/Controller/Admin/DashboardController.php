@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Articles;
 use App\Entity\Categories;
+use App\Entity\Commentaires;
 use App\Entity\MotsCles;
 use App\Entity\Users;
 use App\Repository\ArticlesRepository;
@@ -54,6 +55,9 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Articles', 'fa fa-book', Articles::class),
             MenuItem::linkToCrud('Categories', 'fa fa-tags', Categories::class),
             MenuItem::linkToCrud('Mots-cles', 'fa fa-tags', MotsCles::class),
+
+            MenuItem::section('Commentaires'),
+            MenuItem::linkToCrud('Commentaires', 'fa fa-comment', Commentaires::class),
 
             MenuItem::section('Utilisateurs'),
             MenuItem::linkToCrud('Utilisateurs', 'fa fa-users', Users::class),

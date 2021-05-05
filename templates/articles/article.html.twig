@@ -19,13 +19,13 @@
     #}
 
     <div>{{ article.contenu|raw }}</div>
-
     <br>
 
     <h2>Commentaires ({{ commentaires | length }})</h2>
     {% for commentaire in commentaires %}
-        <p>Ecrit par {{ commentaire.pseudo }} le {{ commentaire.createdAt|date }}</p>
+        <p>Ecrit par {{ commentaire.pseudo }} le {{ commentaire.createdAt|date('d/m/Y à h\\hi') }}</p>
         <div>{{ commentaire.contenu }}</div>
+        <br>
     {% else %}
         <p>Il n'y a pas de commentaires !</p>
     {% endfor %}
