@@ -27,20 +27,33 @@ class ArticleFormType extends AbstractType
             ->add('contenu', CKEditorType::class)
             ->add('imageFile', VichImageType::class, [
                 'label' => 'Image',
+                'attr' => [
+                    'class' => 'form-control'
+                ],
             ])
             ->add('mots_cles', EntityType::class, [
                 'class' => MotsCles::class,
                 'label' => 'Mots-clés',
                 'multiple' => true,
                 'expanded' => true,
+                'attr' => [
+                    'class' => 'form-control'
+                ],
             ])
             ->add('categories', EntityType::class, [
                 'class' => Categories::class,
                 'label' => 'Catégories',
                 'multiple' => true,
                 'expanded' => true,
+                'attr' => [
+                    'class' => 'form-control'
+                ],
             ])
-            ->add('Ajouter', SubmitType::class)
+            ->add('Ajouter', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-primary btn-block form-control'
+                ],
+            ])
         ;
     }
 

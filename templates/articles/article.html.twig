@@ -5,6 +5,9 @@
 {% block main %}
     <h1>{{ article.titre }}</h1>
     <p>Publié le {{ article.createdAt|date('d/m/Y à H\\hi') }}</p>
+    {% if(article.featuredImage) %}
+        <img src="{{ asset('uploads/images/featured/' ~ article.featuredImage) }}" alt="image" />
+    {% endif %}
     <div>Catégories
         {% for categorie in article.categories %}
             <span class="badge bg-primary">{{ categorie.nom }}</span>
