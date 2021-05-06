@@ -3,6 +3,7 @@
 {% block title %}{{ parent() }} | Ajouter un article{% endblock %}
 
 {% block main %}
-    <h1 style="margin-bottom: 2rem;">Ajouter un article</h1>
+    {% set titre = "Ajouter un article" %}
+    <h1 style="margin-bottom: 2rem;">{{ titre }}</h1>
     {{ form(articleForm) }}
 {% endblock %}

@@ -4,11 +4,13 @@
 
 {% block main %}
     <div class="container">
-        <h1 style="text-align: center; margin-bottom: 2rem;">Liste des articles</h1>
+        {% set titre = "Liste des articles" %}
+        <h1 style="text-align: center; margin-bottom: 2rem;">{{ titre }}</h1>
         {#
+        {{ dump(articles }}
         {% for article in articles %}
-            <h2><a href="{{ path('actualites_article', {'slug': article.slug}) }}">{{ article.titre }}</a></h2>
-            <p>{{ article.contenu }}</p>
+        <h2><a href="{{ path('actualites_article', {'slug': article.slug}) }}">{{ article.titre }}</a></h2>
+        <p>{{ article.contenu }}</p>
         {% endfor %}
         #}
         <div class="block-articles">

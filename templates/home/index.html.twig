@@ -4,7 +4,8 @@
 
 {% block main %}
     <div class="container">
-        <h2>Ceci est la page d'accueil</h2>
+        {% set titre = "Page d'accueil" %}
+        <h1>{{ titre }}</h1>
 
         {# Les deux liens ci-dessous fonctionneront, le 2ème est la meilleure pratique #}
         {# Ce lien fonctionnera mais devra être modifié en cas de modification des routes #}

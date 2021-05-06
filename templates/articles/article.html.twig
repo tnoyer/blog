@@ -4,26 +4,25 @@
 
 {% block main %}
     <h1>{{ article.titre }}</h1>
-    <p>Publié le {{ article.createdAt|date('d/m/Y à h\\hi') }}</p>
-    <p>Catégories :
+    <p>Publié le {{ article.createdAt|date('d/m/Y à H\\hi') }}</p>
+    <div>Catégories
         {% for categorie in article.categories %}
-            {{ categorie.nom }}
+            <span class="badge bg-primary">{{ categorie.nom }}</span>
         {% endfor %}
-    </p>
-    {#
-    <p>Mots-clés :
-        {% for motCle in article.mots_cles %}
-            {{ motCle.mot_cle }}
+    </div>
+    <div>Mots-clés
+        {% for motCle in article.motsCles %}
+            <span class="badge bg-secondary">{{ motCle.motCle }}</span>
         {% endfor %}
-    </p>
-    #}
+    </div>
+    <br>
 
     <div>{{ article.contenu|raw }}</div>
     <br>
 
     <h2>Commentaires ({{ commentaires | length }})</h2>
     {% for commentaire in commentaires %}
-        <p>Ecrit par {{ commentaire.pseudo }} le {{ commentaire.createdAt|date('d/m/Y à h\\hi') }}</p>
+        <p>Ecrit par {{ commentaire.pseudo }} le {{ commentaire.createdAt|date('d/m/Y à H\\hi') }}</p>
         <div>{{ commentaire.contenu }}</div>
         <br>
     {% else %}

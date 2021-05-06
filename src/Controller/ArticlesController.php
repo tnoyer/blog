@@ -9,6 +9,7 @@ use App\Form\CommentaireFormType;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
@@ -21,6 +22,9 @@ class ArticlesController extends AbstractController
 {
     /**
      * @Route("/articles", name="articles")
+     * @param Request $request
+     * @param PaginatorInterface $paginator
+     * @return Response
      */
     public function index(Request $request, PaginatorInterface $paginator)
     {
