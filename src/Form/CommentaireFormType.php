@@ -35,7 +35,11 @@ class CommentaireFormType extends AbstractType
             ->add('rgpd', CheckboxType::class, [
                 'label' => 'J\'accepte la collecte de mes données'
             ])
-            ->add('Envoyer', SubmitType::class)
+            ->add('Envoyer', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-primary btn-block form-control'
+                ],
+            ])
         ;
     }
 

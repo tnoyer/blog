@@ -6,8 +6,15 @@
     <h1>{{ article.titre }}</h1>
     <p>Publié le {{ article.createdAt|date('d/m/Y à H\\hi') }}</p>
     {% if(article.featuredImage) %}
-        <img src="{{ asset('uploads/images/featured/' ~ article.featuredImage) }}" alt="image" />
+        {# <p><img src="{{ asset('uploads/images/featured/' ~ article.featuredImage) }}" alt="image" /></p> #}
+        <p><img src="{{ vich_uploader_asset(article, 'imageFile')|imagine_filter('article') }}" alt="{{ article.titre }}"></p>
+        {# faire un rm -rf public/media/ si on change le filtre dans liip-imagine.yaml #}
+    {% else %}
+        <p><img src="{{ asset('img/default-image.png') }}" alt="{{ article.titre }}" /></p>
     {% endif %}
+
+    <div>{{ article.contenu|raw }}</div>
+
     <div>Catégories
         {% for categorie in article.categories %}
             <span class="badge bg-primary">{{ categorie.nom }}</span>
@@ -18,9 +25,6 @@
             <span class="badge bg-secondary">{{ motCle.motCle }}</span>
         {% endfor %}
     </div>
-    <br>
-
-    <div>{{ article.contenu|raw }}</div>
     <br>
 
     <h2>Commentaires ({{ commentaires | length }})</h2>
