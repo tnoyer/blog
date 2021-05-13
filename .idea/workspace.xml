@@ -20,16 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e4709b6-9625-4f0e-a67e-8ecb180bbbc6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/monblog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/monblog.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/CommentaireFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CommentaireFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/articles/article.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/articles/article.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Articles.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Articles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +183,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/public/img" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -234,7 +227,10 @@
       <workItem from="1620301594577" duration="8956000" />
       <workItem from="1620651893030" duration="1835000" />
       <workItem from="1620654270564" duration="4000" />
-      <workItem from="1620738723130" duration="8338000" />
+      <workItem from="1620738723130" duration="9068000" />
+      <workItem from="1620822931949" duration="2869000" />
+      <workItem from="1620907418900" duration="4056000" />
+      <workItem from="1620912379956" duration="3580000" />
     </task>
     <servers />
   </component>
@@ -254,6 +250,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1620912194035">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1620912194035" />
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1620217931790">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -266,10 +266,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1619181167907" />
-    <state x="277" y="57" key="SettingsEditor" timestamp="1619179255254">
+    <state x="277" y="57" key="SettingsEditor" timestamp="1620826593717">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1619179255254" />
+    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1620826593717" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1620223915661">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

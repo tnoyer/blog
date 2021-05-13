@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ArticlesRepository::class)
@@ -20,11 +21,13 @@ class Articles
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"show_articles"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"show_articles"})
      */
     private $titre;
 
@@ -36,6 +39,7 @@ class Articles
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"show_articles"})
      */
     private $contenu;
 
@@ -43,6 +47,7 @@ class Articles
      * @var \DateTime $created_at
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
+     * @Groups({"show_articles"})
      */
     private $created_at;
 
@@ -50,12 +55,14 @@ class Articles
      * @var \DateTime $updated_at
      * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime")
+     * @Groups({"show_articles"})
      */
     private $updated_at;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @var string
+     * @Groups({"show_articles"})
      */
     private $featured_image;
 
