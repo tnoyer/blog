@@ -76,6 +76,7 @@ class Articles
     /**
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="articles")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"show_articles"})
      */
     private $users;
 
