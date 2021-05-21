@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Articles;
+use App\Entity\Categories;
 use App\Entity\Commentaires;
 use App\Form\ArticleFormType;
 use App\Form\CommentaireFormType;
@@ -32,15 +33,23 @@ class ArticlesController extends AbstractController
         $donnees = $this->getDoctrine()->getRepository(Articles::class)->findBy([],
         ['created_at' => 'desc']);
 
+        //liste des catégories
+        $categories = $this->getDoctrine()->getRepository(Categories::class)->findAll();
+
+        //page courante
+        $page = $request->query->getInt('page', 1);
+
         //pagination
         $articles = $paginator->paginate(
             $donnees,
-            $request->query->getInt('page', 1),
+            $page,
             8
         );
 
         return $this->render('articles/index.html.twig', [
             'articles' => $articles,
+            'categories' => $categories,
+            'page' => $page
         ]);
     }
 

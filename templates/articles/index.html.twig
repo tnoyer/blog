@@ -13,24 +13,51 @@
         <p>{{ article.contenu }}</p>
         {% endfor %}
         #}
+        <div class="block-categories" style="margin-bottom: 1rem">
+            <h2>Filtrer</h2>
+            <form id="filters">
+                {% for categorie in categories %}
+                    <input type="checkbox" name="categories[]" id="cat{{ categorie.id }}" value="{{ categorie.id }}">
+                    <label for="cat{{ categorie.id }}">{{ categorie.nom }}</label>
+                {% endfor %}
+                <input type="hidden" name="page" value="{{ page }}">
+            </form>
+        </div>
         <div class="block-articles">
             {% for article in articles %}
-                <div class="card" style="width: 20%; height: 15rem; margin: 0 1rem 1rem 0;">
+                <div class="card" style="width: 100%; margin-bottom: 1rem;">
                     <div class="card-body">
-                        <h5 class="card-title">
-                            <a href="{{ path('actualites_article', {'slug': article.slug}) }}">{{ article.titre }}</a>
-                        </h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ article.slug }}</h6>
-                        <p class="card-text">
-                            {# slice ne fonctionne pas avec raw mais avec striptags #}
-                            {{ article.contenu | length > 100 ? article.contenu | slice(0, 100) | striptags ~ ' [...]' : article.contenu | raw }}
-                        </p>
+                        <div class="card-block-image">
+                            {% if(article.featuredImage) %}
+                                <p><img src="{{ vich_uploader_asset(article, 'imageFile')|imagine_filter('carre') }}"
+                                        alt="{{ article.titre }}"></p>
+                            {% else %}
+                                <p><img src="{{ asset('img/default-image.png') }}" alt="{{ article.titre }}"/></p>
+                            {% endif %}
+                        </div>
+                        <div class="card-block-text">
+                            <h5 class="card-title">
+                                <a href="{{ path('actualites_article', {'slug': article.slug}) }}">{{ article.titre }}</a>
+                            </h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ article.slug }}</h6>
+                            <p class="card-text">
+                                {# slice ne fonctionne pas avec raw mais avec striptags #}
+                                {{ article.contenu | length > 200 ? article.contenu | slice(0, 200) | striptags ~ ' [...]' : article.contenu | raw }}
+                            </p>
+                        </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
+    </div>
+
+    <div style="display: flex; justify-content: center">
         <div class="navigation">
             {{ knp_pagination_render(articles) }}
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/filters.js') }}"></script>
 {% endblock %}

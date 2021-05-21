@@ -21,11 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1e4709b6-9625-4f0e-a67e-8ecb180bbbc6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ApiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Articles.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Articles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Users.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ArticlesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ArticlesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/articles/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/articles/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,7 +233,11 @@
       <workItem from="1620822931949" duration="2869000" />
       <workItem from="1620907418900" duration="4056000" />
       <workItem from="1620912379956" duration="3830000" />
-      <workItem from="1620994803339" duration="5043000" />
+      <workItem from="1620994803339" duration="5200000" />
+      <workItem from="1621253229437" duration="43000" />
+      <workItem from="1621328628483" duration="2213000" />
+      <workItem from="1621430198519" duration="1104000" />
+      <workItem from="1621600443534" duration="7311000" />
     </task>
     <servers />
   </component>
@@ -270,10 +273,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1619181167907" />
-    <state x="277" y="57" key="SettingsEditor" timestamp="1620826593717">
+    <state x="277" y="57" key="SettingsEditor" timestamp="1621430872821">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1620826593717" />
+    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1621430872821" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1620223915661">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

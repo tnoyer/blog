@@ -68,13 +68,22 @@ login
 /*
 list of articles
  */
+block-cat-art{
+    display: flex;
+}
+
 .block-articles{
     display: flex;
-    justify-content: flex-start;
     flex-wrap: wrap;
 }
 
+.card-body{
+    display: flex;
+}
 
+.card-block-text{
+    padding: 1rem;
+}
 
 /**
 footer
