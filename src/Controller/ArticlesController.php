@@ -9,6 +9,7 @@ use App\Form\ArticleFormType;
 use App\Form\CommentaireFormType;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -30,26 +31,46 @@ class ArticlesController extends AbstractController
     public function index(Request $request, PaginatorInterface $paginator)
     {
         //liste des articles trié par date de création
+        /*
         $donnees = $this->getDoctrine()->getRepository(Articles::class)->findBy([],
         ['created_at' => 'desc']);
+        */
 
         //liste des catégories
         $categories = $this->getDoctrine()->getRepository(Categories::class)->findAll();
 
+        //On récupère les filtres catégories
+        $filters = $request->get("categories");
+
+        // On définit le nombre d'éléments par page
+        $limit = 8;
+
         //page courante
         $page = $request->query->getInt('page', 1);
 
-        //pagination
-        $articles = $paginator->paginate(
-            $donnees,
-            $page,
-            8
-        );
+        //liste des articles avec le filtre catégorie
+        $articles = $this->getDoctrine()->getRepository(Articles::class)->getPaginatedArticles($page, $limit, $filters);
+
+        // On récupère le nombre total d'articles
+        $total = $this->getDoctrine()->getRepository(Articles::class)->getTotalArticles($filters);
+
+        if($request->get('ajax')){
+            return new JsonResponse([
+                'content' => $this->renderView('articles/_content.html.twig', [
+                    'articles' => $articles,
+                    'page' => $page,
+                    'total' => $total,
+                    'limit' => $limit
+                ])
+            ]);
+        }
 
         return $this->render('articles/index.html.twig', [
             'articles' => $articles,
             'categories' => $categories,
-            'page' => $page
+            'page' => $page,
+            'total' => $total,
+            'limit' => $limit
         ]);
     }
 

@@ -16,6 +16,21 @@ document.querySelectorAll("#filters input").forEach(input => {
 
         //on récupère l'url active
         const Url = new URL(window.location.href);
-        console.log(Url);
+
+        //On lance la requète Ajax
+        fetch(Url.pathname + "?" + Params.toString() + "&ajax=1", {
+            headers: {
+                "X-Requested-With": "XMLHttpRequest"
+            }
+        }).then(response =>
+            response.json()
+        ).then(data => {
+            //zone de listing des articles
+            const content = document.querySelector("#content");
+            //on remplace le contenu
+            content.innerHTML = data.content;
+            //on met à jour l'url
+            history.pushState({}, null, Url.pathname + "?" + Params.toString());
+        }).catch(e => alert(e))
     });
 });
