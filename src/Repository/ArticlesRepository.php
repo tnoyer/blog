@@ -44,8 +44,8 @@ class ArticlesRepository extends ServiceEntityRepository
                 ->setParameter('cats', array_values($filters));
         }
         $query->orderBy('a.created_at')
-            ->setFirstResult(($page * $limit) - $limit)
-            ->setMaxResults($limit)
+            ->setFirstResult(($page * $limit) - $limit) //OFFSET
+            ->setMaxResults($limit) //LIMIT
         ;
         return $query->getQuery()->getResult();
     }

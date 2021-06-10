@@ -19,6 +19,9 @@
                         {# slice ne fonctionne pas avec raw mais avec striptags #}
                         {{ article.contenu | length > 200 ? article.contenu | slice(0, 200) | striptags ~ ' [...]' : article.contenu | raw }}
                     </p>
+                    {% for categorie in article.categories %}
+                        <span class="badge bg-primary">{{ categorie.nom }}</span>
+                    {% endfor %}
                 </div>
             </div>
         </div>
