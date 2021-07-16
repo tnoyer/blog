@@ -31,7 +31,6 @@ window.onload = function() {
                 //on remplace le contenu
                 content.innerHTML = data.content;
                 //on met à jour l'url
-                console.log(Params.toString())
                 history.pushState({}, null, Url.pathname + "?" + Params.toString());
             }).catch(e => alert(e))
         });

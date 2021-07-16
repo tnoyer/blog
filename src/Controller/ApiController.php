@@ -71,26 +71,26 @@ class ApiController extends AbstractController
     {
         // On vérifie si la requête est une requête Ajax
         //if($request->isXmlHttpRequest()) {
-            // On instancie un nouvel article
-            $article = new Articles();
+        // On instancie un nouvel article
+        $article = new Articles();
 
-            // On décode les données envoyées
-            $donnees = json_decode($request->getContent());
+        // On décode les données envoyées
+        $donnees = json_decode($request->getContent());
 
-            // On hydrate l'objet
-            $article->setTitre($donnees->titre);
-            $article->setContenu($donnees->contenu);
-            $article->setFeaturedImage($donnees->image);
-            $user = $this->getDoctrine()->getRepository(Users::class)->findOneBy(["id" => 36]);
-            $article->setUsers($user);
+        // On hydrate l'objet
+        $article->setTitre($donnees->titre);
+        $article->setContenu($donnees->contenu);
+        $article->setFeaturedImage($donnees->image);
+        $user = $this->getDoctrine()->getRepository(Users::class)->findOneBy(["id" => 36]);
+        $article->setUsers($user);
 
-            // On sauvegarde en base
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($article);
-            $entityManager->flush();
+        // On sauvegarde en base
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($article);
+        $entityManager->flush();
 
-            // On retourne la confirmation
-            return new Response('ok', 201);
+        // On retourne la confirmation
+        return new Response('ok', 201);
         //}
         //return new Response('Failed', 404);
     }
@@ -106,34 +106,34 @@ class ApiController extends AbstractController
         // On vérifie si la requête est une requête Ajax
         //if($request->isXmlHttpRequest()) {
 
-            // On décode les données envoyées
-            $donnees = json_decode($request->getContent());
+        // On décode les données envoyées
+        $donnees = json_decode($request->getContent());
 
-            // On initialise le code de réponse
-            $code = 200;
+        // On initialise le code de réponse
+        $code = 200;
 
-            // Si l'article n'est pas trouvé
-            if(!$article){
-                // On instancie un nouvel article
-                $article = new Articles();
-                // On change le code de réponse
-                $code = 201;
-            }
+        // Si l'article n'est pas trouvé
+        if (!$article) {
+            // On instancie un nouvel article
+            $article = new Articles();
+            // On change le code de réponse
+            $code = 201;
+        }
 
-            // On hydrate l'objet
-            $article->setTitre($donnees->titre);
-            $article->setContenu($donnees->contenu);
-            $article->setFeaturedImage($donnees->image);
-            $user = $this->getDoctrine()->getRepository(Users::class)->find(36);
-            $article->setUsers($user);
+        // On hydrate l'objet
+        $article->setTitre($donnees->titre);
+        $article->setContenu($donnees->contenu);
+        $article->setFeaturedImage($donnees->image);
+        $user = $this->getDoctrine()->getRepository(Users::class)->find(36);
+        $article->setUsers($user);
 
-            // On sauvegarde en base
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($article);
-            $entityManager->flush();
+        // On sauvegarde en base
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($article);
+        $entityManager->flush();
 
-            // On retourne la confirmation
-            return new Response('ok', $code);
+        // On retourne la confirmation
+        return new Response('ok', $code);
         //}
         //return new Response('Failed', 404);
     }

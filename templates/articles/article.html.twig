@@ -3,39 +3,42 @@
 {% block title %}{{ parent() }} | {{ article.titre }}{% endblock %}
 
 {% block main %}
-    <h1>{{ article.titre }}</h1>
-    <p>Publié le {{ article.createdAt|date('d/m/Y à H\\hi') }}</p>
-    {% if(article.featuredImage) %}
-        {# <p><img src="{{ asset('uploads/images/featured/' ~ article.featuredImage) }}" alt="image" /></p> #}
-        <p><img src="{{ vich_uploader_asset(article, 'imageFile')|imagine_filter('article') }}" alt="{{ article.titre }}"></p>
-        {# faire un rm -rf public/media/ si on change le filtre dans liip-imagine.yaml #}
-    {% else %}
-        <p><img src="{{ asset('img/default-image.png') }}" alt="{{ article.titre }}" /></p>
-    {% endif %}
+    <div class="container">
+        <h1>{{ article.titre }}</h1>
+        <p>Publié le {{ article.createdAt|date('d/m/Y à H\\hi') }}</p>
+        {% if(article.featuredImage) %}
+            {# <p><img src="{{ asset('uploads/images/featured/' ~ article.featuredImage) }}" alt="image" /></p> #}
+            <p><img src="{{ vich_uploader_asset(article, 'imageFile')|imagine_filter('article') }}"
+                    alt="{{ article.titre }}"></p>
+            {# faire un rm -rf public/media/ si on change le filtre dans liip-imagine.yaml #}
+        {% else %}
+            <p><img src="{{ asset('img/default-image.png') }}" alt="{{ article.titre }}"/></p>
+        {% endif %}
 
-    <div>{{ article.contenu|raw }}</div>
+        <div>{{ article.contenu|raw }}</div>
 
-    <div>Catégories
-        {% for categorie in article.categories %}
-            <span class="badge bg-primary">{{ categorie.nom }}</span>
-        {% endfor %}
-    </div>
-    <div>Mots-clés
-        {% for motCle in article.motsCles %}
-            <span class="badge bg-secondary">{{ motCle.motCle }}</span>
-        {% endfor %}
-    </div>
-    <br>
-
-    <h2>Commentaires ({{ commentaires | length }})</h2>
-    {% for commentaire in commentaires %}
-        <p>Ecrit par {{ commentaire.pseudo }} le {{ commentaire.createdAt|date('d/m/Y à H\\hi') }}</p>
-        <div>{{ commentaire.contenu }}</div>
+        <div>Catégories
+            {% for categorie in article.categories %}
+                <span class="badge bg-primary">{{ categorie.nom }}</span>
+            {% endfor %}
+        </div>
+        <div>Mots-clés
+            {% for motCle in article.motsCles %}
+                <span class="badge bg-secondary">{{ motCle.motCle }}</span>
+            {% endfor %}
+        </div>
         <br>
-    {% else %}
-        <p>Il n'y a pas de commentaires !</p>
-    {% endfor %}
 
-    <h2>Ajouter un commentaire</h2>
-    {{ form(commentForm) }}
+        <h2>Commentaires ({{ commentaires | length }})</h2>
+        {% for commentaire in commentaires %}
+            <p>Ecrit par {{ commentaire.pseudo }} le {{ commentaire.createdAt|date('d/m/Y à H\\hi') }}</p>
+            <div>{{ commentaire.contenu }}</div>
+            <br>
+        {% else %}
+            <p>Il n'y a pas de commentaires !</p>
+        {% endfor %}
+
+        <h2>Ajouter un commentaire</h2>
+        {{ form(commentForm) }}
+    </div>
 {% endblock %}
